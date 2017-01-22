@@ -33,10 +33,10 @@ def hello():
 
 	documents = []
 	for r in bills_passed.split('\n'):
-		documents.append( (r, "yes") )
+		documents.append( (r, "liberal") )
 
 	for r in bills_rejected.split('\n'):
-		documents.append( (r, "no") )
+		documents.append( (r, "conservative") )
 
 	all_words = []
 
@@ -75,8 +75,8 @@ def hello():
 	print("Naive Bayes accuracy percent:", (nltk.classify.accuracy(classifier, testing_set))*100)
 	#classifier.show_most_informative_features(1)
 
-	print (classifier.show_most_informative_features(5))
-	return jsonify({'status': 201, 'error': None, 'payload': {'response': classifier.show_most_informative_features(1), 'accuracy_percent': (nltk.classify.accuracy(classifier, testing_set))*100}})
+	#print (classifier.show_most_informative_features(5))
+	return jsonify({'status': 201, 'error': None, 'payload': {'response': classifier.show_most_informative_features(6), 'accuracy_percent': (nltk.classify.accuracy(classifier, testing_set))*100}})
 
 if __name__ == "__main__":
 	app.run()
